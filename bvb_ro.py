@@ -169,12 +169,15 @@ class Handler(Extract, GetPages):
                 #     temp['streetAddress'] = splitted_addr[0]
             except:
                 pass
+            print(addr)
             try:
                 # city = addr.replace(temp['zip'], '')
                 # city = city.replace(temp['streetAddress'], '')
                 # city = city.replace(',', '').strip()
                 # city = re.findall('[A-Z][a-z]+', city)
-                temp['city'] = addr.split(', ')[-2].replace('.', '')
+                city = addr.split(', ')[-2].replace('.', '')
+                if city == '-':
+                    temp['city'] = addr.split(', ')[-3].replace('.', '')
                 # temp['fullAddress'] += f", {temp['city']}"
             except:
                 pass
